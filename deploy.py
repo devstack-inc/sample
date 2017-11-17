@@ -16,7 +16,7 @@ savedmodel_req_data = {'file': open(file_name, 'rb')}
 savedmodel_response = requests.post(API_URL, headers=savedmodel_req_headers, files=savedmodel_req_data)
 
 #Change the Model for Serving Cluster
-API_URL = 'http://180.210.14.172:9000/serving' + '/' + 'k8s-gpu-cluster' + '/' + 'test5'
+API_URL = 'http://180.210.14.172:9000/serving' + '/' + 'k8s-gpu-cluster' + '/' + 'devstack'
 req_headers = {'X-AUTH-TOKEN': token, "Content-Type": "application/json"}
 data = { "add_model": { "models" : 'mnist' } }
 response = requests.put(API_URL, headers=req_headers, data=json.dumps(data))
