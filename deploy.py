@@ -1,10 +1,10 @@
-import os, requests, json
+import os, requests, json, sys
 
 #Get Admin Token
 OS_AUTH_URL = http://180.210.14.102:5000/
 TOKEN_REQ_URL = OS_AUTH_URL + '/v3/auth/tokens?nocatalog'
 token_req_headers = {'Content-Type': 'application/json'}
-token_req_data = {'auth': { 'identity': { 'methods': ['password'],'password': {'user': {'domain': {'name': 'Default'},'name': 'admin', 'password': 'DevStack2017'} } }, 'scope': { 'project': { 'domain': { 'name': 'Default'}, 'name':  'admin' } } }}
+token_req_data = {'auth': { 'identity': { 'methods': ['password'],'password': {'user': {'domain': {'name': 'Default'},'name': 'admin', 'password': sys.argv[1]} } }, 'scope': { 'project': { 'domain': { 'name': 'Default'}, 'name':  'admin' } } }}
 token_response = requests.post(TOKEN_REQ_URL, headers=token_req_headers, data=json.dumps(token_req_data))
 token = token_response.headers['X-Subject-Token']
 
