@@ -10,7 +10,7 @@ token = token_response.headers['X-Subject-Token']
 
 #Upload MNIST Model 
 API_URL = 'http://180.210.14.172:9000/savedmodel/' + 'mnist' + '/' + '1'
-file_name = './1.tar.gz'
+file_name = '../1.tar.gz'
 savedmodel_req_headers = {'X-AUTH-TOKEN': token, 'content-disposition': 'attachment; filename=' + file_name}
 savedmodel_req_data = {'file': open(file_name, 'rb')}
 savedmodel_response = requests.post(API_URL, headers=savedmodel_req_headers, files=savedmodel_req_data)
