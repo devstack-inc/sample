@@ -1,0 +1,4 @@
+cd ..
+python mnist_saved_model.py [--training_iteration=1] [--model_version=1] ./
+tar -zcvf 1.tar.gz 1
+cd sample
