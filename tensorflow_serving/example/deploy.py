@@ -9,7 +9,7 @@ token_response = requests.post(TOKEN_REQ_URL, headers=token_req_headers, data=js
 token = token_response.headers['X-Subject-Token']
 
 #Upload MNIST Model
-version = '1' 
+version = '2'
 model_name = 'mnist'
 API_URL = 'http://180.210.14.103:9000/savedmodel/' + model_name + '/' + version
 file_name = version + '.tar.gz'
