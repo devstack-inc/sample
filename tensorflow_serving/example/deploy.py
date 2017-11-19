@@ -33,7 +33,7 @@ req_headers = {'X-AUTH-TOKEN': token, "Content-Type": "application/json"}
 data = { "add_model": { "models" : 'mnist' } }
 response = requests.put(API_URL, headers=req_headers, data=json.dumps(data))
 
-print "40초 뒤 MNIST 요청을 진행합니다."
+print "Request MINIST Processing after 40 seconds."
 time.sleep(40)
 os.system('python mnist_client.py --num_tests=100 --server=180.210.14.17:31413')
 
