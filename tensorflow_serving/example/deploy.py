@@ -1,7 +1,7 @@
 import os, requests, json, sys
 
 
-os.system('python mnist_saved_model.py --training_iteration=1000 --model_version=2 ./')
+os.system('python mnist_saved_model.py --training_iteration=100 --model_version=1 ./')
 
 if os.path.isdir('./1'):
     os.system('tar zcf 1.tar.gz 1')
@@ -17,7 +17,7 @@ token_response = requests.post(TOKEN_REQ_URL, headers=token_req_headers, data=js
 token = token_response.headers['X-Subject-Token']
 
 #Upload MNIST Model
-version = '2'
+version = '1'
 model_name = 'mnist'
 API_URL = 'http://180.210.14.103:9000/savedmodel/' + model_name + '/' + version
 file_name = version + '.tar.gz'
