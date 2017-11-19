@@ -1,5 +1,11 @@
 import os, requests, json, sys
 
+
+if os.path.isdir('./1'):
+    os.system('tar zcf 1.tar.gz 1')
+else:
+    os.system('tar zcf 2.tar.gz 2')
+
 #Get Admin Token
 OS_AUTH_URL = 'http://180.210.14.102:5000/'
 TOKEN_REQ_URL = OS_AUTH_URL + '/v3/auth/tokens?nocatalog'
@@ -9,7 +15,7 @@ token_response = requests.post(TOKEN_REQ_URL, headers=token_req_headers, data=js
 token = token_response.headers['X-Subject-Token']
 
 #Upload MNIST Model
-version = '2'
+version = '1'
 model_name = 'mnist'
 API_URL = 'http://180.210.14.103:9000/savedmodel/' + model_name + '/' + version
 file_name = version + '.tar.gz'
