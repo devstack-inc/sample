@@ -3,9 +3,9 @@ import os, requests, json, sys, time
 cluster_name = 'k8s-gpu-cluster'
 application_name = 'devstack'
 model_name = 'mnist'
-version = '1'
+version = '2'
 
-os.system('python mnist_saved_model.py --training_iteration=100 --model_version=1 ./')
+os.system('python mnist_saved_model.py --training_iteration=1000 --model_version=2 ./')
 
 
 
