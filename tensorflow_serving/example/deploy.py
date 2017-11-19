@@ -1,4 +1,4 @@
-import os, requests, json, sys
+import os, requests, json, sys, time
 
 
 os.system('python mnist_saved_model.py --training_iteration=100 --model_version=1 ./')
@@ -33,5 +33,6 @@ req_headers = {'X-AUTH-TOKEN': token, "Content-Type": "application/json"}
 data = { "add_model": { "models" : 'mnist' } }
 response = requests.put(API_URL, headers=req_headers, data=json.dumps(data))
 
+time.sleep(10)
 os.system('python mnist_client.py --num_tests=100 --server=180.210.14.17:31413')
 
