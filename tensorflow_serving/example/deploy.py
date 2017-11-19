@@ -1,7 +1,7 @@
 import os, requests, json, sys
 
 
-os.system('python mnist_saved_model.py --training_iteration=1000 --model_version=2 ./')
+os.system('python mnist_saved_model.py --training_iteration=100 --model_version=1 ./')
 
 if os.path.isdir('./1'):
     os.system('tar zcf 1.tar.gz 1')
@@ -17,7 +17,7 @@ token_response = requests.post(TOKEN_REQ_URL, headers=token_req_headers, data=js
 token = token_response.headers['X-Subject-Token']
 
 #Upload MNIST Model
-version = '2'
+version = '1'
 model_name = 'mnist'
 API_URL = 'http://180.210.14.103:9000/savedmodel/' + model_name + '/' + version
 file_name = version + '.tar.gz'
@@ -29,7 +29,9 @@ savedmodel_response = requests.post(API_URL, headers=savedmodel_req_headers, fil
 cluster_name = 'k8s-gpu-cluster'
 application_name = 'devstack' 
 API_URL = 'http://180.210.14.103:9000/serving' + '/' + cluster_name + '/' + application_name 
-req_headers = {'X-AUTH-TOKEN': token, "Content-Type": "application/json"}
+req_headers = {'X-AUTH-TOKEN': token, "Content-Type": "application/json", "Content-Type": "application/x-gzip" }
 data = { "add_model": { "models" : 'mnist' } }
 response = requests.put(API_URL, headers=req_headers, data=json.dumps(data))
+
+os.system('python mnist_client.py --num_tests=100 --server=180.210.14.17:31593')
 
