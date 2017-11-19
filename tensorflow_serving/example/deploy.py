@@ -21,7 +21,7 @@ version = '1'
 model_name = 'mnist'
 API_URL = 'http://180.210.14.103:9000/savedmodel/' + model_name + '/' + version
 file_name = version + '.tar.gz'
-savedmodel_req_headers = {'X-AUTH-TOKEN': token, 'content-disposition': 'attachment; filename=' + file_name}
+savedmodel_req_headers = {'X-AUTH-TOKEN': token, 'Content-Disposition': 'attachment;filename=' + file_name}
 savedmodel_req_data = {'file': open(file_name, 'rb')}
 savedmodel_response = requests.post(API_URL, headers=savedmodel_req_headers, files=savedmodel_req_data)
 
