@@ -5,7 +5,7 @@ application_name = 'devstack'
 model_name = 'mnist'
 version = '1'
 
-os.system('python mnist_saved_model.py --training_iteration=2000 --model_version=1 ./')
+os.system('python mnist_saved_model.py --training_iteration=10000 --model_version=1 ./')
 
 
 
